@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import font
 
 root = tk.Tk()
 
@@ -15,21 +16,28 @@ def Send_btn (event):
     todos[len(todos)-1] = tk.Label(SubContents_frame,text=("New Todos"+str(len(todos)-1)),anchor="w")
     todos[len(todos)-1].pack()
 
+#font
+
+bold_font = font.Font(size=10,weight="bold")
+
 #コンテンツの実装
 root.update()
 
 #一番上(top)のフレームを実装
-top_frame = tk.Frame(root,height=25,bg="blue")
+top_frame = tk.Frame(root,height=25,bg="lightblue")
 top_frame.pack(side=tk.TOP, fill=tk.X)
 
 #タブ(左側のコンテンツ)のフレームを実装
-SubContents_frame = tk.Frame(root,bg="lightblue",width=(root.winfo_width() - Layout_Contents_width))
+SubContents_frame = tk.Frame(root,width=(root.winfo_width() - Layout_Contents_width))
 SubContents_frame.pack(side=tk.LEFT, fill=tk.Y)
 
 print(root.winfo_width())
 
 btn = tk.Button(top_frame,text="Hello")
 btn.pack(side=tk.LEFT)
+
+discription = tk.Label(top_frame,text="EnterKey to add list.",bg="lightblue",font=bold_font)
+discription.pack(side=tk.TOP)
 
 #btn2 = tk.Button(SubContents_frame, text="Button 2",bg="lime")
 #btn2.grid(row=0,column=0)
