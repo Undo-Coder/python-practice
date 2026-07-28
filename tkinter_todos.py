@@ -16,12 +16,14 @@ text_height = 1
 todos = []
 states = []
 
+#クリップボードにコピーする関数
 def CopyToClipboard(text):
     root.clipboard_clear()       # Clear existing clipboard content
     root.clipboard_append(text)  # Append new text
     root.update()                # Keep clipboard after window closes
     messagebox.showinfo("Success", "Text copied to clipboard.")
 
+#メモを削除　delete todos
 def DeleteTodos(index):
     todos[index][2].destroy()
     todos[index][3].destroy()
@@ -31,9 +33,11 @@ def DeleteTodos(index):
     todos.remove(todos[index])
     root.update()
 
+#ボタン用の関数
 def Send_btn (event):
     addList()
 
+#todoを新しく追加する関数
 def addList():
 
     state = tk.BooleanVar()
@@ -69,25 +73,24 @@ top_frame.pack(side=tk.TOP, fill=tk.X)
 SubContents_frame = tk.Frame(root,width=(root.winfo_width() - Layout_Contents_width),bg="gainsboro")
 SubContents_frame.pack(side=tk.LEFT, fill=tk.Y)
 
-Right_frame = tk.Frame(root,width=40,bg="gainsboro")
-Right_frame.pack(side=tk.RIGHT, fill=tk.Y)
-
+#todoを追加するボタン
 btn = tk.Button(top_frame,text="Add",command=addList)
 btn.pack(side=tk.LEFT)
 
+#ウィンドウを手前に表示するチェックボックス
 keep_on_top = tk.BooleanVar(value=True)
 keep_on_topCheck = tk.Checkbutton(top_frame,variable=keep_on_top,bg="lightblue",command=lambda: root.attributes("-topmost", keep_on_top.get()))
 keep_on_topCheck.pack(side=tk.RIGHT)
 
+#チェックボックスの説明
 discription = tk.Label(top_frame,text="Bring the window to the front",bg="lightblue",font=bold_font)
 discription.pack(side=tk.RIGHT)
 
+#入力欄
 txtbox = tk.Entry(top_frame)
 txtbox.pack(side=tk.TOP,fill="x",pady=(4, 0))
 
-#btn2 = tk.Button(SubContents_frame, text="Button 2",bg="lime")
-#btn2.grid(row=0,column=0)
-
+#enterでtodoを追加するためのkeybind
 txtbox.bind("<Return>", Send_btn)
 
 root.mainloop() #メインループの実行
