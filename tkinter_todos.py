@@ -1,3 +1,4 @@
+import time
 import tkinter as tk
 from tkinter import font
 from tkinter import messagebox
@@ -21,6 +22,15 @@ def CopyToClipboard(text):
     root.update()                # Keep clipboard after window closes
     messagebox.showinfo("Success", "Text copied to clipboard.")
 
+def DeleteTodos(index):
+    todos[index][2].destroy()
+    todos[index][3].destroy()
+
+    states.remove(states[index])
+    
+    todos.remove(todos[index])
+    root.update()
+
 def Send_btn (event):
     addList()
 
@@ -30,18 +40,18 @@ def addList():
     states.append(state)
 
     todos.append(None)
-    todos[len(todos)-1] = [(txtbox.get().strip()),states[len(states)-1].get(),None,None]
+    todos[len(todos)-1] = [(txtbox.get().strip()),states[len(states)-1].get(),None,None,None]
 
     todos[len(todos)-1][2] = tk.Label(root,text=todos[len(todos)-1][0],anchor="w",height=text_height)
     #todos[len(todos)-1][2].grid(row=0, column=len(todos)-1)
     todos[len(todos)-1][2].pack(side=tk.TOP,fill=tk.X,ipady=5)
     todos[len(todos)-1][2].bind("<Button-1>",lambda event : CopyToClipboard(todos[len(todos)-1][0]))
+    todos[len(todos)-1][2].bind("<Button-3>",lambda event : DeleteTodos((len(todos)-1)))
 
     todos[len(todos)-1][3] = tk.Checkbutton(SubContents_frame, variable=state,anchor="w",height=text_height,bg="gainsboro")
     #todos[len(todos)-1][3].grid(row=0, column=len(todos)-1)
     todos[len(todos)-1][3].pack(side=tk.TOP,fill=tk.X,ipady=3)
 
-    
     txtbox.delete(0, tk.END)
 
 #font
@@ -59,7 +69,7 @@ top_frame.pack(side=tk.TOP, fill=tk.X)
 SubContents_frame = tk.Frame(root,width=(root.winfo_width() - Layout_Contents_width),bg="gainsboro")
 SubContents_frame.pack(side=tk.LEFT, fill=tk.Y)
 
-Right_frame = tk.Frame(root,width=20,bg="gainsboro")
+Right_frame = tk.Frame(root,width=40,bg="gainsboro")
 Right_frame.pack(side=tk.RIGHT, fill=tk.Y)
 
 btn = tk.Button(top_frame,text="Add",command=addList)
