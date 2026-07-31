@@ -1,4 +1,3 @@
-import time
 import tkinter as tk
 from tkinter import font
 from tkinter import messagebox
