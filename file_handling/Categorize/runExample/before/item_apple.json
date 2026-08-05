@@ -1,0 +1,14 @@
+{
+    "type":"item",
+    "name":"apple",
+    "texture":"item_apple.png",
+    "description":"item_apple_desc.txt",
+    "function":
+    {
+        "use":
+        [
+            "eat",
+            "health"
+        ]
+    }
+}

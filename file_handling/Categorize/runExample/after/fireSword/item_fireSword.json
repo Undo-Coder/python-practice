@@ -1,0 +1,14 @@
+{
+    "type":"weapon",
+    "name":"FireSword",
+    "texture":"item_fireSword.png",
+    "description":"item_fireSword_desc.txt",
+    "function":
+    {
+        "use":
+        [
+            "Slash",
+            "fireAttack"
+        ]
+    }
+}
