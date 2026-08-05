@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PyScript test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pyscript/core/dist/core.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@pyscript/core/dist/core.js"></script>
+</head>
+<body>
+    
+    <h1 id="hello"></h1>
+    
+    <h2 id="output-area"></h2>
+
+    <py-script>
+        import datetime
+        import time
+        from pyscript import display
+
+        epoch_seconds = time.time()
+
+        dt = datetime.datetime.fromtimestamp(epoch_seconds)
+
+        display(dt.strftime('%Y/%m/%d %H:%M:%S'), target="output-area")
+        display("hello,world!",target="hello")
+    </script>
+
+</body>
+</html>
