@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
+    <py-config>
+        {
+            "packages": ["matplotlib","pandas"]
+        }
+    </py-config>
+    <title>Document</title>
+</head>
+<body>
+    <h1>pandas</h1>
+    <script id="python-terminal" type="py">
+        import matplotlib.pyplot as plt
+        import numpy
+        from pyscript import display
+
+        # サンプルデータを作成
+        x = numpy.linspace(0, 2 * numpy.pi, 100)
+        y = numpy.sin(x)
+
+        # plotを作成
+        fig, ax = plt.subplots()
+
+        ax.plot(x, y, label="sin(x)", color="blue")#変数x 変数yをx軸、y軸に割り当てる、”sin(x)”というラベルを追加,色を青にする
+        
+        ax.set_title("Sine Wave") #タイトルを設定する
+        
+        ax.set_xlabel("x") #x軸のラベルを設定
+        ax.set_ylabel("sin(x)") #y軸のラベルを設定
+        ax.legend() # 凡例を表示
+        ax.grid(True) #グリッド表示をオンにする
+
+        # Display in the HTML div
+        display(fig, target="result")
+    </script>
+
+    <div id="result">loading...</div>
+</body>
+</html>
