@@ -57,3 +57,9 @@ print(df.head())
 print("\ntailで後ろの5行を取得")
 
 print(df.tail())
+
+#query()を使って条件を満たす列を取得
+
+print("\nquery()を使って条件を満たす列を取得 (Ageが30以上の人)")
+
+print(df.query('Age >= 30'))
