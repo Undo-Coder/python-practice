@@ -23,4 +23,4 @@ except pd.errors.ParserError as e:
 except UnicodeDecodeError:
     raise ValueError("Encoding error. Try changing the 'encoding' parameter.")
 
-print(df)
+df.to_html("./test_to_html.html")
