@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--CDNリンクを追加 / Add a CDN link-->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
+
+    <!--モジュールをインポートする。/ import module-->
+    <py-config>
+        {
+            "packages": ["matplotlib","pandas"]
+        }
+    </py-config>
+
+    <title>module test</title>
+</head>
+<body>
+
+    <h1>import module test</h1>
+
+    <div id="display">loading...</div>
+
+    <!--スクリプト本文-->>
+    <script type="py">
+        from pyscript import display
+        import matplotlib as plt
+        import pandas
+
+        display("Import success!",target="display",append=False)
+    </script>
+</body>
+</html>
+
+<!-- config{}で指定するほかに、<script type="py" config='{"packages":["モジュール名","モジュール名2"]}'>でも行ける。-->
+<!-- モジュールがサポートされているのかはpyscriptの公式ドキュメントで見ることができる。リンク: https://packages.pyscript.net/ -->
+
+<!-- Besides specifying it in config{}, you can also do it with <script type="py" config='{"packages":["module_name","module_name2"]}'>. -->
+<!-- You can check if a module is supported in the PyScript official documentation. Link: https://packages.pyscript.net/ -->
