@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Welcome</title>
+</head>
+<body>
+    <header>
+        <a href="./logout" class="logout-btn">ログアウト</a>
+        Flask-Login Test
+    </header>
+    <div class="contents">
+        <div class="Welcome">
+            <h1>ようこそ、{{ current_user }}さん！</h1>
+        </div>
+        <p>
+            このwebはFlaskで作られています。<br>
+            このwebはFlask-loginの練習用です。<br>
+            デザインや画像などは、私自身が制作、考えました。
+        </p>
+    </div>
+</body>
+</html>
